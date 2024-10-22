@@ -7,7 +7,7 @@ function App() {
         Sprawdzam, czy zadziała mechanizmy CI/CD z github action. 
         Dodatkowa linijka dodana.
 
-        branch1
+        proba merga
       </h1>
       <p>To jest moja pierwsza aplikacja React uruchomiona w VS Code.</p>
     </div>
