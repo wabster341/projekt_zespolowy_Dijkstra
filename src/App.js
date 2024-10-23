@@ -6,7 +6,7 @@ function App() {
       <h1>Witaj na mojej testowej stronie! 
         Sprawdzam, czy zadziała mechanizmy CI/CD z github action. 
         \nDodatkowa linijka dodana.
-        \Jeszcze jedna linia
+        \nJeszcze jedna linia dodana
   
       </h1>
       <p>To jest moja pierwsza aplikacja React uruchomiona w VS Code.</p>
