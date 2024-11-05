@@ -5,6 +5,23 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Link to the website
 [Website](https://icy-tree-05c32cc03.5.azurestaticapps.net/)
 
+## Jak odpalić całą aplikację lokalnie
+Z rzeczy javascriptowych:
+W src puść
+```
+npm install
+npm start
+```
+Z rzeczy pythonowych
+W głównym folderze puść
+```
+python -m venv venv
+(dla linuksa/macos) python -m venv /path/to/new/virtual/environment
+(dla windowsa) python -m venv C:\path\to\new\virtual\environment
+pip install -r requirements.txt
+python server.py
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -20,7 +37,7 @@ You may also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+cSee the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
