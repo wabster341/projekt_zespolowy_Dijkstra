@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Link to the website
+[Website](https://icy-tree-05c32cc03.5.azurestaticapps.net/)
+
 ## Available Scripts
 
 In the project directory, you can run:
