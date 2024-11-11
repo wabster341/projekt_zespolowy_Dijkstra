@@ -1,7 +1,7 @@
 # Co programować
 
 ## Python
-- [ ] Znaleźć bibliotekę pythonową która przyjmuje graf i zwraca listę punktów gdzie ten graf narysować (Szybko się dowiedzieć jak wygląda ta struktura danych)
+- [ ] Znaleźć bibliotekę pythonową która przyjmuje graf i zwraca listę punktów gdzie ten graf narysować (Szybko się dowiedzieć jak wygląda ta struktura danych) (Oskar)
 - [ ] Serwer pythonowy online
 - [ ] przemiałka z csv na graf (to ze starego projektu)
 - [ ] Jak po otrzymaniu zapytania od reacta (plik csv albo wybór wierzchołków) przemielić inputa i wysłać odpowiedź z powrotem do reacta
