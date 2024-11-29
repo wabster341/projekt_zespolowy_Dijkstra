@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as d3 from 'd3';
+import Inc from './Inc';
 
 function Graph({ graphData, highlightedPath }) {
   const svgRef = useRef(null);
@@ -291,6 +292,9 @@ function App() {
         <div style={{ flex: "1 1 600px", maxWidth: "800px" }}>
           <Graph graphData={graphResult} highlightedPath={highlightedPath} />
         </div>
+
+          {/* Increment calculation */}
+          <Inc />
         <div style={{ maxWidth: "300px", marginLeft: "20px", flex: "1 1 300px" }}>
           <h2>Opis problemu:</h2>
           <p>
