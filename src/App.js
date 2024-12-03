@@ -235,6 +235,44 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  const [file, setFile] = useState(null);
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!file) {
+      setError('Wybierz plik.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch('http://127.0.0.1:5000/inc', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setResult(data);
+        setError(null);
+      } else {
+        setResult(null);
+        setError(data.error || 'Wystąpił błąd');
+      }
+    } catch (err) {
+      setResult(null);
+      setError('Błąd połączenia z serwerem.');
+    }
+  };
+
   return (
     <div style={{ backgroundColor: "#f7f7f7", padding: "20px", position: "relative" }}>
       {/* Przycisk menu */}
@@ -308,7 +346,31 @@ function App() {
         </div>
       </div>
 
+
+
       {/* Sekcja wgrywania pliku */}
+      <div style={{ padding: "20px" }}>
+      <h1>Powiększanie liczby z pliku CSV</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="file" accept=".csv" onChange={handleFileChange} />
+        <button type="submit">Oblicz</button>
+      </form>
+
+      {result && (
+        <div>
+          <h2>Wynik</h2>
+          <p>Początkowa liczba: {result.number}</p>
+          <p>Końcowa liczba: {result.incremented_result}</p>
+        </div>
+      )}
+
+      {error && (
+        <div style={{ color: "red" }}>
+          <p>Error: {error}</p>
+        </div>
+      )}
+    </div>
+
       <div style={{ marginTop: "20px", textAlign: "center" }}>
         <p>
           <b>Wgraj swój graf</b>
