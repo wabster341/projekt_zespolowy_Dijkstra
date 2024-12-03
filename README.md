@@ -10,6 +10,7 @@ Z rzeczy javascriptowych:
 W src puść
 ```
 npm install
+npm install d3, axios
 npm start
 ```
 Z rzeczy pythonowych
