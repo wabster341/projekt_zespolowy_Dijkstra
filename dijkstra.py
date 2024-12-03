@@ -1,5 +1,6 @@
 from graph import Graph
 from sys import maxsize
+import csv
 
 def find_distance(graph: Graph, x, y):
     x = graph.m_adj_list.get(x)
@@ -47,3 +48,37 @@ def dijkstra(graph: Graph, source: int, target: int):
                     route[current_vertix[0]] = minimal_distance_vertix[0]
 
         tentative_distance.remove(minimal_distance_vertix)
+
+
+graph = Graph(6, False)
+
+graph.add_edge(0, 1, 2)
+graph.add_edge(0, 2, 1)
+graph.add_edge(1, 3, 2)
+graph.add_edge(1, 4, 3)
+graph.add_edge(2, 4, 6)
+graph.add_edge(2, 5, 2)
+graph.add_edge(3, 5, 7)
+graph.add_edge(4, 5, 1)
+
+iris = []
+with open("test.csv", "r") as f:
+    for row in csv.reader(f):
+        for i in range(len(row)):
+            row[i] = int(row[i]) # konwersja z str na float
+        iris.append(row)
+
+def csv_to_graph(ls):
+    list_vertices = []
+    for i in range(len(ls)):
+        list_vertices.append(ls[i][0])
+        list_vertices.append(ls[i][2])
+    print(type(list_vertices))
+    number_vertices = len(set(list_vertices))
+    graph_ls = Graph(number_vertices, False)
+    for i in range(len(ls)):
+        graph_ls.add_edge(ls[i][0], ls[i][1], ls[i][2])
+    return(graph_ls)
+
+
+a = csv_to_graph(iris)
