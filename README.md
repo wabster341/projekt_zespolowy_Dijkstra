@@ -20,7 +20,7 @@ python -m venv venv
 (dla linuksa/macos) python -m venv /path/to/new/virtual/environment
 (dla windowsa) python -m venv C:\path\to\new\virtual\environment
 pip install -r requirements.txt
-python server.py
+python app.py
 ```
 
 ## Available Scripts

@@ -68,6 +68,7 @@ def list_to_graph(ls):
         graph_ls.add_edge(ls[i][0], ls[i][1], ls[i][2])
     return graph_ls
 
+
 def process_csv(file_path):
     with open(file_path, mode="r") as file:
         reader = csv.reader(file, delimiter=",")

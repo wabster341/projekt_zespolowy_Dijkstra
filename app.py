@@ -21,15 +21,16 @@ def calculate_increment():
 
     try:
         edges, source, destination = process_csv(file.filename)
+        edges = [[edge[0], edge[1], edge[2]] for edge in edges]
         end, route, route_cost = dijkstra(list_to_graph(edges), source, destination)
+        edges = [ {"source" : edge[0], "target" : edge[1], "weight" : edge[2]}
+                  for edge in edges]
+        route = [ {"source" : route[i], "target" : route[i+1]} for i in range(len(route)-1)]
+        print(edges, route)
         return jsonify(
             {
                 "edges": edges,
-                "source": source,
-                "destination": destination,
-                "end": end,
                 "route": route,
-                "route_cost": route_cost,
             }
         )
 

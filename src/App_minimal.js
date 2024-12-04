@@ -139,8 +139,22 @@ function Graph({ graphData, highlightedPath }) {
 }
 
 function App() {
-        const [graphResult, setGraphResult] = useState([]);
-        const [highlightedPath, setHighlightedPath] = useState([]);
+        const [graphResult, setGraphResult] = useState([
+                        { source: 0, target: 1, weight: 2 },
+                        { source: 0, target: 2, weight: 1 },
+                        { source: 1, target: 3, weight: 2 },
+                        { source: 1, target: 4, weight: 3 },
+                        { source: 2, target: 4, weight: 6 },
+                        { source: 2, target: 5, weight: 2 },
+                        { source: 3, target: 5, weight: 7 },
+                        { source: 4, target: 5, weight: 1 }
+                ]);
+
+        const [highlightedPath, setHighlightedPath] = useState([
+                { source: 0, target: 1 },
+                { source: 1, target: 4 },
+                { source: 4, target: 5 }
+        ]);
 
         // Przełącznik menu
         const [file, setFile] = useState(null);
@@ -151,38 +165,33 @@ function App() {
                 setFile(event.target.files[0]);
         };
 
-
-    
         const handleSubmit = async (event) => {
                 event.preventDefault();
                 if (!file) {
-                        setError("Wybierz plik.");
+                        setError('Wybierz plik.');
                         return;
                 }
 
                 const formData = new FormData();
-                formData.append("file", file);
+                formData.append('file', file);
 
                 try {
-                        const response = await fetch("http://127.0.0.1:5000/inc", {
-                                method: "POST",
-                                body: formData,
+                        const response = await fetch('http://127.0.0.1:5000/inc', {
+                                method: 'POST',
+                                body: formData
                         });
 
                         const data = await response.json();
                         if (response.ok) {
-                                setGraphResult(data.edges); // Set the graph edges
-                                setHighlightedPath(data.route); // Set the highlighted route
+                                setResult(data);
                                 setError(null);
                         } else {
-                                setGraphResult([]);
-                                setHighlightedPath([]);
-                                setError(data.error || "Wystąpił błąd");
+                                setResult(null);
+                                setError(data.error || 'Wystąpił błąd');
                         }
                 } catch (err) {
-                        setGraphResult([]);
-                        setHighlightedPath([]);
-                        setError("Błąd połączenia z serwerem.");
+                        setResult(null);
+                        setError('Błąd połączenia z serwerem.');
                 }
         };
 
